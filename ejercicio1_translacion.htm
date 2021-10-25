@@ -1,0 +1,40 @@
+
+<canvas id='canvas' width=800 height=600>
+<script>
+	
+	function polygon(a, colorBorde, colorRelleno, grosor) { 
+	ctx.beginPath()
+	ctx.strokeStyle = colorBorde
+	ctx.fillStyle = colorRelleno
+	ctx.lineWidth = grosor;
+	ctx.moveTo(a[0],a[1])
+	for (i=2; i < a.length; i+=2)
+	ctx.lineTo(a[i],a[i+1]);
+	ctx.closePath()
+	ctx.stroke()
+	ctx.fill()
+}
+
+	function sumatranslacion(v1,v2){
+	var c = [];
+	for (i=0; i < v1.length; i+=2){
+	c[i]=(v1[i]+v2[0])
+	c[i+1]=(v1[i+1]+v2[1])
+    }
+	return c;
+}
+
+	var canvas = document.getElementById('canvas')
+	var ctx = canvas.getContext('2d');
+
+	var letra_e = [0, 0, 0, 50, 40, 50, 40, 40, 10, 40, 10, 30, 20, 30, 20, 20, 10, 20, 10, 10, 40, 10, 40, 0];
+
+	var vector_translacion = [60, 90];
+
+	var letra_e_trans = sumatranslacion(letra_e, vector_translacion)
+
+	polygon(letra_e, 'red','red')
+
+	polygon(letra_e_trans, 'red','red')
+
+</script>
